@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		99FBF1F286014CDBA246B1AE /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CAA5596131345FA87374AEB /* libPods.a */; };
 		C8863506170CCF3D00FFDD5D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8863505170CCF3D00FFDD5D /* UIKit.framework */; };
 		C8863508170CCF3D00FFDD5D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8863507170CCF3D00FFDD5D /* Foundation.framework */; };
 		C886350A170CCF3D00FFDD5D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8863509170CCF3D00FFDD5D /* CoreGraphics.framework */; };
@@ -17,15 +18,24 @@
 		C886351A170CCF3D00FFDD5D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8863519170CCF3D00FFDD5D /* Default@2x.png */; };
 		C886351C170CCF3D00FFDD5D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C886351B170CCF3D00FFDD5D /* Default-568h@2x.png */; };
 		C886351F170CCF3E00FFDD5D /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C886351D170CCF3E00FFDD5D /* MainStoryboard.storyboard */; };
-		C8863522170CCF3E00FFDD5D /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8863521170CCF3E00FFDD5D /* FirstViewController.m */; };
 		C8863524170CCF3E00FFDD5D /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = C8863523170CCF3E00FFDD5D /* first.png */; };
 		C8863526170CCF3E00FFDD5D /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8863525170CCF3E00FFDD5D /* first@2x.png */; };
-		C8863529170CCF3E00FFDD5D /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8863528170CCF3E00FFDD5D /* SecondViewController.m */; };
 		C886352B170CCF3E00FFDD5D /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = C886352A170CCF3E00FFDD5D /* second.png */; };
 		C886352D170CCF3E00FFDD5D /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C886352C170CCF3E00FFDD5D /* second@2x.png */; };
+		C8863535170CCFA100FFDD5D /* MarketTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8863534170CCFA100FFDD5D /* MarketTableViewController.m */; };
+		C8863538170CCFC900FFDD5D /* TickerData.m in Sources */ = {isa = PBXBuildFile; fileRef = C8863537170CCFC900FFDD5D /* TickerData.m */; };
+		C886353B170CD00F00FFDD5D /* MarketCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C886353A170CD00F00FFDD5D /* MarketCell.m */; };
+		C8A62A7A1713828200C446E9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8A62A791713828200C446E9 /* QuartzCore.framework */; };
+		C8A62A891713B3E200C446E9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A62A881713B3E200C446E9 /* DetailViewController.m */; };
+		C8A62A8C1713D44D00C446E9 /* SideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A62A8B1713D44D00C446E9 /* SideViewController.m */; };
+		C8A62A8F1713D9FF00C446E9 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A62A8E1713D9FF00C446E9 /* ChartsViewController.m */; };
+		C8A62B66171CDB5A00C446E9 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A62B65171CDB5800C446E9 /* NewsViewController.m */; };
+		C8A62B69171CEC4600C446E9 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A62B68171CEC4600C446E9 /* NewsItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		58B036C61B1344A581AED48B /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		9CAA5596131345FA87374AEB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8863502170CCF3D00FFDD5D /* BitcoinMarketWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BitcoinMarketWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8863505170CCF3D00FFDD5D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C8863507170CCF3D00FFDD5D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -40,14 +50,27 @@
 		C8863519170CCF3D00FFDD5D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		C886351B170CCF3D00FFDD5D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C886351E170CCF3E00FFDD5D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		C8863520170CCF3E00FFDD5D /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		C8863521170CCF3E00FFDD5D /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		C8863523170CCF3E00FFDD5D /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
 		C8863525170CCF3E00FFDD5D /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		C8863527170CCF3E00FFDD5D /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C8863528170CCF3E00FFDD5D /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		C886352A170CCF3E00FFDD5D /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
 		C886352C170CCF3E00FFDD5D /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
+		C8863533170CCFA100FFDD5D /* MarketTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketTableViewController.h; sourceTree = "<group>"; };
+		C8863534170CCFA100FFDD5D /* MarketTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketTableViewController.m; sourceTree = "<group>"; };
+		C8863536170CCFC900FFDD5D /* TickerData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TickerData.h; sourceTree = "<group>"; };
+		C8863537170CCFC900FFDD5D /* TickerData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TickerData.m; sourceTree = "<group>"; };
+		C8863539170CD00F00FFDD5D /* MarketCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarketCell.h; sourceTree = "<group>"; };
+		C886353A170CD00F00FFDD5D /* MarketCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarketCell.m; sourceTree = "<group>"; };
+		C8A62A791713828200C446E9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C8A62A871713B3E200C446E9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		C8A62A881713B3E200C446E9 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		C8A62A8A1713D44D00C446E9 /* SideViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideViewController.h; sourceTree = "<group>"; };
+		C8A62A8B1713D44D00C446E9 /* SideViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideViewController.m; sourceTree = "<group>"; };
+		C8A62A8D1713D9FE00C446E9 /* ChartsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartsViewController.h; sourceTree = "<group>"; };
+		C8A62A8E1713D9FF00C446E9 /* ChartsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartsViewController.m; sourceTree = "<group>"; };
+		C8A62B64171CDB5700C446E9 /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
+		C8A62B65171CDB5800C446E9 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
+		C8A62B67171CEC4500C446E9 /* NewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsItem.h; sourceTree = "<group>"; };
+		C8A62B68171CEC4600C446E9 /* NewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,9 +78,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8A62A7A1713828200C446E9 /* QuartzCore.framework in Frameworks */,
 				C8863506170CCF3D00FFDD5D /* UIKit.framework in Frameworks */,
 				C8863508170CCF3D00FFDD5D /* Foundation.framework in Frameworks */,
 				C886350A170CCF3D00FFDD5D /* CoreGraphics.framework in Frameworks */,
+				99FBF1F286014CDBA246B1AE /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +95,7 @@
 				C886350B170CCF3D00FFDD5D /* BitcoinMarketWatch */,
 				C8863504170CCF3D00FFDD5D /* Frameworks */,
 				C8863503170CCF3D00FFDD5D /* Products */,
+				58B036C61B1344A581AED48B /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,9 +110,11 @@
 		C8863504170CCF3D00FFDD5D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C8A62A791713828200C446E9 /* QuartzCore.framework */,
 				C8863505170CCF3D00FFDD5D /* UIKit.framework */,
 				C8863507170CCF3D00FFDD5D /* Foundation.framework */,
 				C8863509170CCF3D00FFDD5D /* CoreGraphics.framework */,
+				9CAA5596131345FA87374AEB /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -97,12 +125,24 @@
 				C8863514170CCF3D00FFDD5D /* AppDelegate.h */,
 				C8863515170CCF3D00FFDD5D /* AppDelegate.m */,
 				C886351D170CCF3E00FFDD5D /* MainStoryboard.storyboard */,
-				C8863520170CCF3E00FFDD5D /* FirstViewController.h */,
-				C8863521170CCF3E00FFDD5D /* FirstViewController.m */,
+				C8A62A8A1713D44D00C446E9 /* SideViewController.h */,
+				C8A62A8B1713D44D00C446E9 /* SideViewController.m */,
+				C8A62A8D1713D9FE00C446E9 /* ChartsViewController.h */,
+				C8A62A8E1713D9FF00C446E9 /* ChartsViewController.m */,
+				C8863533170CCFA100FFDD5D /* MarketTableViewController.h */,
+				C8863534170CCFA100FFDD5D /* MarketTableViewController.m */,
+				C8A62A871713B3E200C446E9 /* DetailViewController.h */,
+				C8A62A881713B3E200C446E9 /* DetailViewController.m */,
+				C8863536170CCFC900FFDD5D /* TickerData.h */,
+				C8863537170CCFC900FFDD5D /* TickerData.m */,
+				C8A62B64171CDB5700C446E9 /* NewsViewController.h */,
+				C8A62B65171CDB5800C446E9 /* NewsViewController.m */,
+				C8A62B67171CEC4500C446E9 /* NewsItem.h */,
+				C8A62B68171CEC4600C446E9 /* NewsItem.m */,
+				C8863539170CD00F00FFDD5D /* MarketCell.h */,
+				C886353A170CD00F00FFDD5D /* MarketCell.m */,
 				C8863523170CCF3E00FFDD5D /* first.png */,
 				C8863525170CCF3E00FFDD5D /* first@2x.png */,
-				C8863527170CCF3E00FFDD5D /* SecondViewController.h */,
-				C8863528170CCF3E00FFDD5D /* SecondViewController.m */,
 				C886352A170CCF3E00FFDD5D /* second.png */,
 				C886352C170CCF3E00FFDD5D /* second@2x.png */,
 				C886350C170CCF3D00FFDD5D /* Supporting Files */,
@@ -134,6 +174,7 @@
 				C88634FE170CCF3D00FFDD5D /* Sources */,
 				C88634FF170CCF3D00FFDD5D /* Frameworks */,
 				C8863500170CCF3D00FFDD5D /* Resources */,
+				79B58A790848475EB0052376 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -189,6 +230,23 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		79B58A790848475EB0052376 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C88634FE170CCF3D00FFDD5D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -196,8 +254,14 @@
 			files = (
 				C8863512170CCF3D00FFDD5D /* main.m in Sources */,
 				C8863516170CCF3D00FFDD5D /* AppDelegate.m in Sources */,
-				C8863522170CCF3E00FFDD5D /* FirstViewController.m in Sources */,
-				C8863529170CCF3E00FFDD5D /* SecondViewController.m in Sources */,
+				C8863535170CCFA100FFDD5D /* MarketTableViewController.m in Sources */,
+				C8863538170CCFC900FFDD5D /* TickerData.m in Sources */,
+				C886353B170CD00F00FFDD5D /* MarketCell.m in Sources */,
+				C8A62A891713B3E200C446E9 /* DetailViewController.m in Sources */,
+				C8A62A8C1713D44D00C446E9 /* SideViewController.m in Sources */,
+				C8A62A8F1713D9FF00C446E9 /* ChartsViewController.m in Sources */,
+				C8A62B66171CDB5A00C446E9 /* NewsViewController.m in Sources */,
+				C8A62B69171CEC4600C446E9 /* NewsItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +345,7 @@
 		};
 		C8863531170CCF3E00FFDD5D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58B036C61B1344A581AED48B /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitcoinMarketWatch/BitcoinMarketWatch-Prefix.pch";
@@ -292,6 +357,7 @@
 		};
 		C8863532170CCF3E00FFDD5D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 58B036C61B1344A581AED48B /* Pods.xcconfig */;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitcoinMarketWatch/BitcoinMarketWatch-Prefix.pch";
@@ -320,6 +386,7 @@
 				C8863532170CCF3E00FFDD5D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,0 +1,17 @@
+
+SPEC CHECKSUMS: 
+  MBProgressHUD: 9b55a90566fb5d07df0602f6fd9fa04510ad5d52
+  JASidePanels: 172b5130c7e3d9e3d2a0b3821d53f0764b4a2ff9
+  AFNetworking: 3cbae45f61a9f995cdbd56bd571223910d7f4e44
+
+COCOAPODS: 0.16.4
+
+DEPENDENCIES: 
+- AFNetworking (~> 1.2.0)
+- JASidePanels (~> 1.3.0)
+- MBProgressHUD (~> 0.6)
+
+PODS: 
+- AFNetworking (1.2.0)
+- JASidePanels (1.3.0)
+- MBProgressHUD (0.6)

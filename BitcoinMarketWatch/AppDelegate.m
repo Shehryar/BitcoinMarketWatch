@@ -7,12 +7,28 @@
 //
 
 #import "AppDelegate.h"
+#import "JASidePanelController.h"
+#import "SideViewController.h"
+#import "MarketTableViewController.h"
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    self.viewC = [[JASidePanelController alloc] init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard" bundle:nil];
+    //UINavigationController *centerViewController = [storyboard instantiateInitialViewController];
+    UINavigationController *center = [storyboard instantiateViewControllerWithIdentifier:@"centerViewController"];
+    //self.viewC.centerPanel = [centerViewController initWithRootViewController:[[MarketTableViewController alloc] init]];
+    //self.viewC.leftPanel = [[SideViewController alloc] init];
+    self.viewC.leftPanel = [storyboard instantiateViewControllerWithIdentifier:@"leftViewController"];
+    self.viewC.centerPanel = center;
+    self.window.rootViewController = self.viewC;
+    [self.window makeKeyAndVisible];
+    
+    
     return YES;
 }
 							
