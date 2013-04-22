@@ -35,23 +35,6 @@
     NSData *jsonData = [NSData dataWithContentsOfURL:tickerDataURL];
     NSError *error = nil;
     
-    /*
-    NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
-    NSLog(@"%@", dataDictionary);
-    NSArray *ar = [NSArray arrayWithObject:dataDictionary];
-    for (NSString *key in [dataDictionary allKeys]) {
-        for (NSDictionary *dict in ar) {
-            TickerData *t = [[TickerData alloc] init];
-            t.currency = key;
-            t.symbol = [dataDictionary objectForKey:@"symbol"];
-            t.last = [dataDictionary objectForKey:@"last"];
-            [_tickerArray addObject:t];
-            
-        }
-
-    }
-    
-    */
     NSDictionary *dataDictionary = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:&error];
     NSLog(@"%@", dataDictionary);
     
@@ -145,7 +128,6 @@
 
 
 - (void)refreshView:(UIRefreshControl *)sender {
-    //[self.tableView reloadData];
     NSLog(@"Refreshing");
     
     NSURL *tickerDataURL = [NSURL URLWithString:@"https://blockchain.info/ticker"];

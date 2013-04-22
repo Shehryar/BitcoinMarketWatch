@@ -8,6 +8,8 @@
 
 #import "NewsViewController.h"
 #import "AFNetworking.h"
+#import "NewsDetailViewController.h"
+
 
 @interface NewsViewController ()
 
@@ -27,90 +29,82 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
+
     _newsArray = [NSMutableArray array];
-    _outstring = [NSMutableString string];
+    _currentString = [NSMutableString string];
     
     NSURL *url = [NSURL URLWithString:@"http://bitcoincharts.com/headlines.rss"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
     AFXMLRequestOperation *operation = [AFXMLRequestOperation XMLParserRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser){
-        _xmlNews = [NSMutableDictionary dictionary];
         XMLParser.delegate = self;
-        [XMLParser setShouldProcessNamespaces:YES];
+        [XMLParser setShouldProcessNamespaces:NO];
         [XMLParser parse];
         NSLog(@"XML Parsed");
+        NSLog(@"%@", [response description]);
         
     }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser) {
         UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving News" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [av show];
     }];
     [operation start];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+     
 }
 
 
 #pragma mark - AFXMLRequestOperationDelegate
-static NSString *kName_Item = @"item";
-static NSString *kName_Title = @"title";
-static NSString *kName_Link = @"link";
 
+static NSString * const kTitleElementName = @"title";
+static NSString * const kLinkElementName = @"link";
+static NSString *const kItemName= @"item";
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict {
     
-//    self.previousElementName = self.elementName;
-//    
-//    if (qName) {
-//        self.elementName = qName;
-//    }
-//    if ([qName isEqualToString:@"item"]) {
-//        self.currentDictionary = [NSMutableDictionary dictionary];
-//    }
-//    _outstring = [NSMutableString string];
-    
-    
-    if ([elementName isEqualToString:@"item"]) {
+    if ([elementName isEqualToString:kItemName]) {
         _currentItem = [[NewsItem alloc] init];
-        _storeCharacters = NO;
     }
-    else if ([elementName isEqualToString:@"title"] || [elementName isEqualToString:@"link"]) {
-        [_outstring setString:@""];
-        //_storeCharacters = YES;
+    
+    if ([elementName isEqualToString:kTitleElementName]) {
+        //_currentItem = [[NewsItem alloc] init];
+        _currentString = [[NSMutableString alloc] init];
+        [_currentString setString:@""];
+        _storeCharacters = YES;
+    }
+    
+    if ([elementName isEqualToString:kLinkElementName]) {
+        _currentString = [[NSMutableString alloc] init];
+        _storeCharacters = YES;
     }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-//    if (!self.elementName)
-//        return;
-//    [self.outstring appendFormat:@"%@", string];
-    [_outstring appendString:string];
-    
-
+    if (_storeCharacters)
+        [_currentString appendString:string];
 }
 
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName {
-    
-    if ([elementName isEqualToString:kName_Title]) {
-        _currentItem.title = _outstring;
+
+    if ([elementName isEqualToString:kTitleElementName]) {
+        _currentItem.title = _currentString;
     }
-    if ([elementName isEqualToString:kName_Link]) {
-        _currentItem.link = _outstring;
+    else if ([elementName isEqualToString:kLinkElementName]) {
+        
+        _currentItem.link = _currentString;
+        //[self finishedNewsItem:_currentItem];
     }
-    if ([elementName isEqualToString:kName_Item]) {
+    if ([elementName isEqualToString:kItemName]) {
         [self finishedNewsItem:_currentItem];
     }
     
+    
+
+    _storeCharacters = NO;
 }
 
 - (void)finishedNewsItem:(NewsItem *)n {
     [_newsArray addObject:n];
-    _currentItem = nil;
+    //_currentItem = nil;
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
@@ -144,7 +138,7 @@ static NSString *kName_Link = @"link";
     static NSString *CellIdentifier = @"newsCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     NewsItem *item = [_newsArray objectAtIndex:indexPath.row];
@@ -157,56 +151,56 @@ static NSString *kName_Link = @"link";
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    if ([[segue identifier] isEqualToString:@"newsDetails"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NewsItem *news = _newsArray[indexPath.row];
+        [[segue destinationViewController] setNewsItem:news];
+        
+        
+        
+    }
 }
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
+- (void)refreshView:(UIRefreshControl *)sender {
+    _newsArray = [NSMutableArray array];
+    _currentString = [NSMutableString string];
+    
+    NSURL *url = [NSURL URLWithString:@"http://bitcoincharts.com/headlines.rss"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    
+    AFXMLRequestOperation *operation = [AFXMLRequestOperation XMLParserRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser){
+        XMLParser.delegate = self;
+        [XMLParser setShouldProcessNamespaces:NO];
+        [XMLParser parse];
+        NSLog(@"XML Parsed");
+        NSLog(@"%@", [response description]);
+        
+    }failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser) {
+        UIAlertView *av = [[UIAlertView alloc] initWithTitle:@"Error Retrieving News" message:[NSString stringWithFormat:@"%@", error] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [av show];
+    }];
+    [operation start];
+    
+    [self.tableView reloadData];
+    [sender endRefreshing];
 }
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//
+//
+//{
+//    // Navigation logic may go here. Create and push another view controller.
+//    
+//   //  NewsDetailViewController *detailViewController = [[NewsDetailViewController alloc] initWithNibName:@"NewsDetailViewController" bundle:nil];
+//    NewsDetailViewController *dvc = [[NewsDetailViewController alloc] init];
+//     // ...
+//     // Pass the selected object to the new view controller.
+//    [self.navigationController presentViewController:dvc animated:YES completion:nil];
+//     //[self.navigationController pushViewController:dvc animated:YES];
+//    
+//}
 
 @end

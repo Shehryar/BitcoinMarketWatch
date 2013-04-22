@@ -8,23 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "NewsItem.h"
+#import "NewsDetailViewController.h"
 
-@interface NewsViewController : UITableViewController <NSXMLParserDelegate>
+@interface NewsViewController : UITableViewController <NSXMLParserDelegate> 
 
-@property (nonatomic, strong) NSMutableArray *newsArray;
 
-@property (strong) NSDictionary *news;
+@property (nonatomic, strong) NSArray *itemsToDisplay;
+
+
+@property (strong) NSMutableArray *newsArray;
 
 @property (strong) NSMutableDictionary *xmlNews;
-//@property(strong) NSMutableDictionary *currentDictionary;//current section being parsed
-//@property(strong) NSString *previousElementName;
-//@property(strong) NSString *elementName;
 
-@property (assign, nonatomic) BOOL *storeCharacters;
-
-@property(strong) NSMutableString *outstring;
+@property(strong) NSMutableString *currentString;
 
 @property (strong) NewsItem *currentItem;
+
+@property (nonatomic, assign) BOOL storeCharacters;
+
 
 - (void)finishedNewsItem: (NewsItem *)n;
 

@@ -83,7 +83,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" textLabel="UZC-25-xy3" detailTextLabel="Yzq-fM-ThF" style="IBUITableViewCellStyleSubtitle" id="qO0-O5-Sa6">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="newsCell" textLabel="UZC-25-xy3" detailTextLabel="yHr-yF-hLt" style="IBUITableViewCellStyleSubtitle" id="qO0-O5-Sa6">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -95,7 +95,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yzq-fM-ThF">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHr-yF-hLt">
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -104,7 +104,7 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
-                                    <segue destination="UDu-e8-VEG" kind="modal" id="JMT-u4-qZS"/>
+                                    <segue destination="UDu-e8-VEG" kind="modal" identifier="newsDetails" id="JMT-u4-qZS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -114,45 +114,62 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="0Me-VN-3cp"/>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="qfB-qi-b3r">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle">
+                            <fragment content="Refresh me!">
+                                <attributes>
+                                    <font key="NSFont" metaFont="toolTip"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HHf-RG-glD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2282" y="836"/>
         </scene>
-        <!--View Controller-->
+        <!--News Detail View Controller-->
         <scene sceneID="cPa-Xx-VKW">
             <objects>
-                <viewController id="UDu-e8-VEG" sceneMemberID="viewController">
+                <viewController id="UDu-e8-VEG" customClass="NewsDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="y2c-LT-B89">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eAF-0u-xee">
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eAF-0u-xee">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" translatesAutoresizingMaskIntoConstraints="NO" id="1e1-SH-Vgg">
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXq-9a-CIv">
                                 <items>
-                                    <barButtonItem title="&lt;" id="GaE-lc-A3N"/>
+                                    <barButtonItem title="Item" id="1L3-3y-usr">
+                                        <connections>
+                                            <action selector="back:" destination="UDu-e8-VEG" id="yYw-xV-GGL"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="kXq-9a-CIv" firstAttribute="trailing" secondItem="y2c-LT-B89" secondAttribute="trailing" type="default" id="032-KX-3bW"/>
                             <constraint firstItem="eAF-0u-xee" firstAttribute="trailing" secondItem="y2c-LT-B89" secondAttribute="trailing" type="default" id="78K-Jh-O2D"/>
-                            <constraint firstItem="1e1-SH-Vgg" firstAttribute="leading" secondItem="y2c-LT-B89" secondAttribute="leading" type="default" id="PYG-p5-Z02"/>
-                            <constraint firstItem="1e1-SH-Vgg" firstAttribute="top" secondItem="eAF-0u-xee" secondAttribute="bottom" type="default" id="U58-S9-s4L"/>
-                            <constraint firstItem="eAF-0u-xee" firstAttribute="top" secondItem="y2c-LT-B89" secondAttribute="top" type="default" id="YLq-n9-zkd"/>
+                            <constraint firstItem="kXq-9a-CIv" firstAttribute="bottom" secondItem="eAF-0u-xee" secondAttribute="top" type="default" id="Oy1-QF-Q5d"/>
+                            <constraint firstItem="kXq-9a-CIv" firstAttribute="top" secondItem="y2c-LT-B89" secondAttribute="top" type="default" id="QdC-kZ-WVT"/>
+                            <constraint firstItem="eAF-0u-xee" firstAttribute="bottom" secondItem="y2c-LT-B89" secondAttribute="bottom" type="default" id="oXg-nF-jqU"/>
                             <constraint firstItem="eAF-0u-xee" firstAttribute="leading" secondItem="y2c-LT-B89" secondAttribute="leading" type="default" id="q49-5s-0H7"/>
-                            <constraint firstItem="1e1-SH-Vgg" firstAttribute="bottom" secondItem="y2c-LT-B89" secondAttribute="bottom" type="default" id="v6r-76-8Cg"/>
-                            <constraint firstItem="1e1-SH-Vgg" firstAttribute="trailing" secondItem="y2c-LT-B89" secondAttribute="trailing" type="default" id="vvP-as-SK5"/>
+                            <constraint firstItem="kXq-9a-CIv" firstAttribute="leading" secondItem="y2c-LT-B89" secondAttribute="leading" type="default" id="vOz-tl-p0c"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VRu-y0-BDp"/>
+                    <connections>
+                        <outlet property="webView" destination="eAF-0u-xee" id="WJc-3r-gGg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eVT-S0-c2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2715" y="836"/>
+            <point key="canvasLocation" x="2731" y="836"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="rfg-pD-Pea">
