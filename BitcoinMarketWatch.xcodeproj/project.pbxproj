@@ -27,6 +27,8 @@
 		C8A62A8F1713D9FF00C446E9 /* ChartsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A62A8E1713D9FF00C446E9 /* ChartsViewController.m */; };
 		C8A62B66171CDB5A00C446E9 /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A62B65171CDB5800C446E9 /* NewsViewController.m */; };
 		C8A62B69171CEC4600C446E9 /* NewsItem.m in Sources */ = {isa = PBXBuildFile; fileRef = C8A62B68171CEC4600C446E9 /* NewsItem.m */; };
+		C8CE8D7B1725EB7300A6C2E7 /* back-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C8CE8D791725EB7300A6C2E7 /* back-icon.png */; };
+		C8CE8D7C1725EB7300A6C2E7 /* back-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C8CE8D7A1725EB7300A6C2E7 /* back-icon@2x.png */; };
 		C8DCD081171DFA2C008FB56B /* NewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C8DCD080171DFA2B008FB56B /* NewsDetailViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,8 @@
 		C8A62B65171CDB5800C446E9 /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		C8A62B67171CEC4500C446E9 /* NewsItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsItem.h; sourceTree = "<group>"; };
 		C8A62B68171CEC4600C446E9 /* NewsItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsItem.m; sourceTree = "<group>"; };
+		C8CE8D791725EB7300A6C2E7 /* back-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-icon.png"; sourceTree = "<group>"; };
+		C8CE8D7A1725EB7300A6C2E7 /* back-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-icon@2x.png"; sourceTree = "<group>"; };
 		C8DCD07F171DFA2B008FB56B /* NewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsDetailViewController.h; sourceTree = "<group>"; };
 		C8DCD080171DFA2B008FB56B /* NewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +121,8 @@
 		C886350B170CCF3D00FFDD5D /* BitcoinMarketWatch */ = {
 			isa = PBXGroup;
 			children = (
+				C8CE8D791725EB7300A6C2E7 /* back-icon.png */,
+				C8CE8D7A1725EB7300A6C2E7 /* back-icon@2x.png */,
 				C8863514170CCF3D00FFDD5D /* AppDelegate.h */,
 				C8863515170CCF3D00FFDD5D /* AppDelegate.m */,
 				C886351D170CCF3E00FFDD5D /* MainStoryboard.storyboard */,
@@ -214,6 +220,8 @@
 				C886351A170CCF3D00FFDD5D /* Default@2x.png in Resources */,
 				C886351C170CCF3D00FFDD5D /* Default-568h@2x.png in Resources */,
 				C886351F170CCF3E00FFDD5D /* MainStoryboard.storyboard in Resources */,
+				C8CE8D7B1725EB7300A6C2E7 /* back-icon.png in Resources */,
+				C8CE8D7C1725EB7300A6C2E7 /* back-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

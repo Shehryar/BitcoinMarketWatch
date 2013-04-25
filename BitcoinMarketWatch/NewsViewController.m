@@ -9,9 +9,12 @@
 #import "NewsViewController.h"
 #import "AFNetworking.h"
 #import "NewsDetailViewController.h"
+#import "MBProgressHUD.h"
 
 
-@interface NewsViewController ()
+@interface NewsViewController () {
+    MBProgressHUD *HUD;
+}
 
 @end
 
@@ -29,6 +32,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.view];
+    [self.view addSubview:HUD];
+    [HUD show:YES];
 
     _newsArray = [NSMutableArray array];
     _currentString = [NSMutableString string];
@@ -48,6 +55,9 @@
         [av show];
     }];
     [operation start];
+    
+    
+    [self.refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
      
 }
 
@@ -186,21 +196,6 @@ static NSString *const kItemName= @"item";
     [self.tableView reloadData];
     [sender endRefreshing];
 }
-#pragma mark - Table view delegate
 
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//
-//
-//{
-//    // Navigation logic may go here. Create and push another view controller.
-//    
-//   //  NewsDetailViewController *detailViewController = [[NewsDetailViewController alloc] initWithNibName:@"NewsDetailViewController" bundle:nil];
-//    NewsDetailViewController *dvc = [[NewsDetailViewController alloc] init];
-//     // ...
-//     // Pass the selected object to the new view controller.
-//    [self.navigationController presentViewController:dvc animated:YES completion:nil];
-//     //[self.navigationController pushViewController:dvc animated:YES];
-//    
-//}
 
 @end
